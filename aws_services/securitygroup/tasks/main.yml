@@ -1,0 +1,28 @@
+---
+# tasks file for securitygroup
+
+- name: Create Security Groups
+  ec2_group:
+    name: sg_allow_ssh_https_https
+    description: Allow ssh from any machine
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    region: "{{ vpc_region }}"
+    state: present
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+      - proto: tcp
+        from_port: 443
+        to_port: 443
+        cidr_ip: 0.0.0.0/0
+#    rules_egress:
+#      - proto: tcp
+#        from_port: "*"
+#        to_port: "*"
+#        cidr_ip: 0.0.0.0/0

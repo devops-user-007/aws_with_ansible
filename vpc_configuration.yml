@@ -5,6 +5,7 @@
   become: yes
   roles:
     - aws_services/vpc
+    - aws_services/securitygroup
     - aws_services/internetgateway
     - aws_services/subnets
    #- aws_services/elasticip

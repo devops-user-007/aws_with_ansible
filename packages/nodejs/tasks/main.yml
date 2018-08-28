@@ -1,0 +1,29 @@
+---
+# tasks file for nodejs
+
+- name: Download script
+  get_url:
+    url: http://rpm.nodesource.com/setup_6.x
+    dest: "{{ script_temp_path }}/nodejs.sh"
+
+
+- name: Give execution rights to execute the script
+  file:
+    path: "{{ script_temp_path }}/nodejs.sh"
+    mode: "u+x"
+
+
+- name: Execute installation script
+  shell: "{{ script_temp_path }}/nodejs.sh"
+
+
+- name: Remvove the installation script
+  file:
+    path: "{{ script_temp_path }}/nodejs.sh"
+    state: absent
+
+
+- name: Install Nodejs
+  yum:
+    name: nodejs
+    state: present

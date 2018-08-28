@@ -1,0 +1,9 @@
+---
+- name: Install packages on the inventory nodes
+  hosts: local
+  gather_facts: no
+  become: yes
+  roles:
+    - packages/git
+    - packages/nodejs
+  
