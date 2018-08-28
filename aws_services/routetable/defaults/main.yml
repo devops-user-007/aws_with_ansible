@@ -1,0 +1,6 @@
+---
+# defaults file for routetable
+dmz_rt_name: dmz_demo_rt
+app_rt_name: app_demo_rt
+db_rt_name_1: db_demo_rt_1
+db_rt_name_2: db_demo_rt_2

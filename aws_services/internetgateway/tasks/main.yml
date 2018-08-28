@@ -1,0 +1,10 @@
+---
+# tasks file for internetgateway
+
+- name: Create Internet Gateway and attach it to VPC
+  ec2_vpc_igw:
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    region: "{{ vpc_region }}"
+    state: present
+  register: igw_demo
+

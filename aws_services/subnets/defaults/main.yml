@@ -1,0 +1,27 @@
+---
+
+# defaults file for subnets
+
+########### SUBNET ###########
+# az
+az_useast2a: us-east-2a
+az_useast2b: us-east-2b
+
+
+# cidr :
+dmz1_subnet_cidr: 192.168.0.0/23
+dmz2_subnet_cidr: 192.168.2.0/23
+app1_subnet_cidr: 192.168.4.0/23
+app2_subnet_cidr: 192.168.6.0/23
+db1_subnet_cidr: 192.168.8.0/23
+db2_subnet_cidr: 192.168.10.0/23
+
+
+# resource tags :
+dmz1_subnet_name: dmz_demo_subnet_1
+dmz2_subnet_name: dmz_demo_subnet_2
+app1_subnet_name: app_demo_subnet_1
+app2_subnet_name: app_demo_subnet_2
+db1_subnet_name: db_demo_subnet_1
+db2_subnet_name: db_demo_subnet_2
+

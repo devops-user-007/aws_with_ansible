@@ -1,0 +1,67 @@
+---
+# tasks file for subnets
+
+- name: Create Subnet for DMZ - 1
+  ec2_vpc_subnet:
+    state: present
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    az: "{{ az_useast2a }}"
+    cidr: "{{ dmz1_subnet_cidr }}"
+    resource_tags:
+      Name: "{{ dmz1_subnet_name }}"
+  register: "{{ dmz1_subnet_name }}"
+
+
+- name: Create Subnet for DMZ - 2
+  ec2_vpc_subnet:
+    state: present
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    az: "{{ az_useast2b }}"
+    cidr: "{{ dmz2_subnet_cidr }}"
+    resource_tags:
+      Name: "{{ dmz2_subnet_name }}"
+  register: "{{ dmz2_subnet_name }}"
+
+
+- name: Create Public Subnet for APP - 1
+  ec2_vpc_subnet:
+    state: present
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    az: "{{ az_useast2a }}"
+    cidr: "{{ app1_subnet_cidr }}"
+    resource_tags:
+      Name: "{{ app1_subnet_name }}"
+  register: "{{ app1_subnet_name }}"
+
+
+- name: Create Public Subnet for APP - 2
+  ec2_vpc_subnet:
+    state: present
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    az: "{{ az_useast2b }}"
+    cidr: "{{ app2_subnet_cidr }}"
+    resource_tags:
+      Name: "{{ app2_subnet_name }}"
+  register: "{{ app2_subnet_name }}"
+
+
+- name: Create Private Subnet for DB - 1
+  ec2_vpc_subnet:
+    state: present
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    az: "{{ az_useast2a }}"
+    cidr: "{{ db1_subnet_cidr }}"
+    resource_tags:
+      Name: "{{ db1_subnet_name }}"
+  register: "{{ db1_subnet_name }}"
+
+
+- name: Create Private Subnet for DB - 2
+  ec2_vpc_subnet:
+    state: present
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    az: "{{ az_useast2b }}"
+    cidr: "{{ db2_subnet_cidr }}"
+    resource_tags:
+      Name: "{{ db2_subnet_name }}"
+  register: "{{ db2_subnet_name }}"

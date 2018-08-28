@@ -1,0 +1,57 @@
+---
+# tasks file for routetable
+
+- name: Create DMZ route table
+  ec2_vpc_route_table:
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    region: "{{ vpc_region }}"
+    subnets:
+      - "{{ dmz_demo_subnet_1.subnet.id }}"
+      - "{{ dmz_demo_subnet_2.subnet.id }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ igw_demo.gateway_id }}"
+    tags:
+      Name: "{{ dmz_rt_name }}"
+
+
+- name: Create APP route table
+  ec2_vpc_route_table:
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    region: "{{ vpc_region }}"
+    subnets:
+      - "{{ app_demo_subnet_1.subnet.id }}"
+      - "{{ app_demo_subnet_2.subnet.id }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ igw_demo.gateway_id }}"
+    tags:
+      Name: "{{ app_rt_name }}"
+
+
+- name: Create DB route table from NAT in App Subnet to Db Subnet in AZ 1
+  ec2_vpc_route_table:
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    region: "{{ vpc_region }}"
+    subnets:
+      - "{{ db_demo_subnet_1.subnet.id }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ natgateway_demo_1.nat_gateway_id }}"
+    tags:
+      Name: "{{ db_rt_name_1 }}"
+    state: present
+
+
+- name: Create DB route table from NAT in App Subnet to Db Subnet in AZ 2
+  ec2_vpc_route_table:
+    vpc_id: "{{ vpc_demo_1.vpc.id }}"
+    region: "{{ vpc_region }}"
+    subnets:
+      - "{{ db_demo_subnet_2.subnet.id }}"
+    routes:
+      - dest: 0.0.0.0/0
+        gateway_id: "{{ natgateway_demo_2.nat_gateway_id }}"
+    tags:
+      Name: "{{ db_rt_name_2 }}"
+    state: present

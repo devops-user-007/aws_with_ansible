@@ -1,0 +1,13 @@
+---
+# tasks file for vpc
+
+- name: Create and Configure VPC
+  ec2_vpc_net:
+    state: present
+    name: "{{ vpc_name }}"
+    cidr_block: "{{ vpc_cidr_block }}"
+    region: "{{ vpc_region }}"
+    tenancy: "{{ vpc_tenancy }}"
+    tags:
+      environment: "{{ vpc_tags_environment }}"
+  register: "{{vpc_name }}"

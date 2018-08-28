@@ -1,0 +1,15 @@
+---
+# tasks file for elasticip
+
+- name: Create elastic IP for nat gateway 1
+  ec2_eip:
+    region: "{{ vpc_region  }}"
+    in_vpc: yes
+  register: eip_demo_1
+
+
+- name: Create elastic IP for nat gateway 2
+  ec2_eip:
+    region: "{{ vpc_region  }}"
+    in_vpc: yes
+  register: eip_demo_2

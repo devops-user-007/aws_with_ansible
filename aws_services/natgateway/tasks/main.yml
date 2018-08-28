@@ -1,0 +1,21 @@
+---
+# tasks file for natgateway
+
+- name: Create new nat gateway and allocate new EIP on App Subnet 1
+  ec2_vpc_nat_gateway:
+    state: present
+    subnet_id: "{{ app_demo_subnet_1.subnet.id }}"
+    #allocation_id: "{{ eip_demo_1 }}"
+    region: "{{ vpc_region }}"
+    if_exist_do_not_create: true
+  register: natgateway_demo_1
+
+
+- name: Create new nat gateway and allocate new EIP on App Subnet 2
+  ec2_vpc_nat_gateway:
+    state: present
+    subnet_id: "{{ app_demo_subnet_2.subnet.id }}"
+    #allocation_id: "{{ eip_demo_2 }}"
+    region: "{{ vpc_region }}"
+    if_exist_do_not_create: true
+  register: natgateway_demo_2

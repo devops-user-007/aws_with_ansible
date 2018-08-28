@@ -1,0 +1,12 @@
+---
+- name: Create and Configure VPC
+  hosts: local
+  gather_facts: no
+  become: yes
+  roles:
+    - aws_services/vpc
+    - aws_services/internetgateway
+    - aws_services/subnets
+   #- aws_services/elasticip
+    - aws_services/natgateway
+    - aws_services/routetable
