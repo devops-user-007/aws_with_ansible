@@ -33,4 +33,4 @@ BSD
 
 Author Information
 --------------------
-I am Suparn Badwaik, Devops Engineer
+I am Suparn Badwaik
